@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Controllers\\Admin",
+    "\\app\\Models",
+    "\\bootstrap",
+    "\\public\\packages",
+    "\\public\\packages\\backpack\\crud",
+    "\\public\\packages\\backpack\\crud\\js",
+    "\\resources",
+    "\\resources\\js"
+  ],
+  "SelectedNode": "\\resources\\js\\bootstrap.js",
+  "PreviewInSolutionExplorer": false
+}
