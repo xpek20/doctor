@@ -40,6 +40,7 @@ class Appointment
 
         $doctor = $event->appointment->doctor_rel;
         Log::info($doctor);
+        echo $doctor;
         
         \Mail::to($doctor['email'])->send(
             new SendAppointmentDetails($event->appointment, $doctor)
