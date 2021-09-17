@@ -69,6 +69,11 @@ class Appointment extends Model
             return $this->belongsTo(Operation::class , 'operation_type');
         }
 
+    public function patient_rel()
+    {
+        return $this->belongsTo(Patient::class, 'patient_name');
+    }
+
     
 
 

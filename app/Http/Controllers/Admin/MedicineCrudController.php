@@ -2,105 +2,114 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\DoctorRequest;
+use App\Http\Requests\MedicineRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use App\Models\MedicineCategory;
 
 /**
- * Class DoctorCrudController
+ * Class MedicineCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class DoctorCrudController extends CrudController
+class MedicineCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     *
+     * 
      * @return void
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Doctor::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/doctor');
-        CRUD::setEntityNameStrings('doctor', 'doctors');
+        CRUD::setModel(\App\Models\Medicine::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/medicine');
+        CRUD::setEntityNameStrings('medicine', 'medicines');
     }
 
     /**
      * Define what happens when the List operation is loaded.
-     *
+     * 
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
+        // CRUD::setFromDb(); // columns
+
         $this->crud->addColumn([
-            'name' => 'onomateponimo',
-            'label' => 'Ονοματεπώνυμο',
+            'name' => 'name',
+            'label' => 'Όνομα',
             'type' => 'text'
         ]);
 
         $this->crud->addColumn([
-            'name' => 'email',
-            'label' => 'Email',
-            'type' => 'email'
+            'name' => 'quantity',
+            'label' => 'Ποσότητα',
+            'type' => 'number'
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'kinito',
-            'label' => 'Κινητό',
-            'type' => 'phone'
-        ]);
+        $this->crud->addColumn(['label' => 'Κατηγορία',
+                                'type'=> 'select',
+                                'name'=> 'medicine_cat_id',
+                                'entity'=> 'medicine_cat_rel',
+                                'model' => "App\Models\MedicineCategory",
+                                'attribute' => 'name']);
         
-        // CRUD::setFromDb(); // columns
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(DoctorRequest::class);
+        CRUD::setValidation(MedicineRequest::class);
 
-        CRUD::field('onomateponimo')
-                ->label('Ονοματεπώνυμο')
+        CRUD::field('name')
+                ->label('Όνομα')
                 ;
 
-        CRUD::field('email')
-        ->label('Email')
+        CRUD::field('quantity')
+        ->label('Ποσότητα')
+        ->type('number')
         ;
 
-        CRUD::field('kinito')
-                ->label('Κινητό')
-                ;
+        CRUD::field('medicine_cat_id')
+            ->type('select')
+            ->label('Κατηγορία')
+            ->entity('MedicineCategory')
+            ->model("App\Models\MedicineCategory")
+            ->attribute('name')
+            ->inline_create(true)
+            
+            ;
 
-        // CRUD::setFromDb(); // fields
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

@@ -17,8 +17,8 @@ class CreateAppointmentsTable extends Migration
             $table->string('patient_name');
             $table->string('doctor');
             $table->string('operation_type');
-            $table->date('date');
-            $table->time('time');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->string('room');
             $table->string('assistant');
             $table->string('anesthesiologist');

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendAppointmentDetails;
+use App\Http\Controllers\calendarcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('appointment/create/mail','App\Http\Controllers\AppointmentEmail@inde
 Route::get('/mail',function() {
     return new SendAppointmentDetails;
 });
+
+Route::get('full-calendar', [calendarcontroller::class, 'index'] );

@@ -9,9 +9,9 @@
 // actual language file, from the package.
 
 // If a langfile with the same name exists in the package, load that one
-if (file_exists(__DIR__.'/../../../../../crud/src/resources/lang/'.basename(__DIR__).'/'.basename(__FILE__))) {
-    return include __DIR__.'/../../../../../crud/src/resources/lang/'.basename(__DIR__).'/'.basename(__FILE__);
-}
+// if (file_exists(__DIR__.'/../../../../../crud/src/resources/lang/'.basename(__DIR__).'/'.basename(__FILE__))) {
+//     return include __DIR__.'/../../../../../crud/src/resources/lang/'.basename(__DIR__).'/'.basename(__FILE__);
+// }
 return [
 
 // Forms
@@ -36,28 +36,28 @@ return [
 'language'          => 'Language',
 
 // CRUD table view
-'all'                       => 'All ',
+'all'                       => 'Όλα ',
 'in_the_database'           => 'in the database',
-'list'                      => 'List',
-'reset'                     => 'Reset',
-'actions'                   => 'Actions',
-'preview'                   => 'Preview',
-'delete'                    => 'Delete',
-'admin'                     => 'Admin',
+'list'                      => 'Λίστα',
+'reset'                     => 'Επαναφορά',
+'actions'                   => 'Ενέργειες',
+'preview'                   => 'Προβολή',
+'delete'                    => 'Διαγραφή',
+'admin'                     => 'Διαχειριστής',
 'details_row'               => 'This is the details row. Modify as you please.',
-'details_row_loading_error' => 'There was an error loading the details. Please retry.',
+'details_row_loading_error' => 'Υπήρξε ένα σφάλμα.',
 'clone'                     => 'Clone',
 'clone_success'             => '<strong>Entry cloned</strong><br>A new entry has been added, with the same information as this one.',
 'clone_failure'             => '<strong>Cloning failed</strong><br>The new entry could not be created. Please try again.',
 
 // Confirmation messages and bubbles
-'delete_confirm'                              => 'Are you sure you want to delete this item?',
-'delete_confirmation_title'                   => 'Item Deleted',
-'delete_confirmation_message'                 => 'The item has been deleted successfully.',
-'delete_confirmation_not_title'               => 'NOT deleted',
-'delete_confirmation_not_message'             => "There's been an error. Your item might not have been deleted.",
-'delete_confirmation_not_deleted_title'       => 'Not deleted',
-'delete_confirmation_not_deleted_message'     => 'Nothing happened. Your item is safe.',
+'delete_confirm'                              => 'Διαγραφή αντικειμένου;',
+'delete_confirmation_title'                   => 'Το αντικείμενο διαγράφτηκε.',
+'delete_confirmation_message'                 => 'Το αντικείμενο διαγράφηκε με επιτυχία.',
+'delete_confirmation_not_title'               => 'Η διαγραφή απέτυχε.',
+'delete_confirmation_not_message'             => "Υπήρξε κάποιο σφάλμα κατά την διαγραφή.",
+'delete_confirmation_not_deleted_title'       => 'Ακύρωση διαγραφής.',
+'delete_confirmation_not_deleted_message'     => 'Το αντικείμενο σου είναι ασφαλές.',
 
 // Bulk actions
 'bulk_no_entries_selected_title'   => 'No entries selected',
@@ -78,21 +78,21 @@ return [
 'bulk_clone_error_message'  => 'One or more entries could not be created. Please try again.',
 
 // Ajax errors
-'ajax_error_title' => 'Error',
-'ajax_error_text'  => 'Error loading page. Please refresh the page.',
+'ajax_error_title' => 'Σφάλμα.',
+'ajax_error_text'  => 'Σφάλμα κατά την φόρτωση της σελίδας. Παρακαλώ κάντε refresh.',
 
 // DataTables translation
 'emptyTable'     => 'No data available in table',
-'info'           => 'Showing _START_ to _END_ of _TOTAL_ entries',
-'infoEmpty'      => 'No entries',
-'infoFiltered'   => '(filtered from _MAX_ total entries)',
+'info'           => 'Προβολή _START_ μέχρι _END_ από τα _TOTAL_ αντικείμενα',
+'infoEmpty'      => 'Δεν βρέθηκαν αντικείμενα',
+'infoFiltered'   => '(από τα _MAX_ συνολικά αντικείμενα)',
 'infoPostFix'    => '.',
 'thousands'      => ',',
-'lengthMenu'     => '_MENU_ entries per page',
+'lengthMenu'     => '_MENU_ αντικείμενα ανά σελίδα',
 'loadingRecords' => 'Loading...',
 'processing'     => 'Processing...',
-'search'         => 'Search',
-'zeroRecords'    => 'No matching entries found',
+'search'         => 'Αναζήτηση',
+'zeroRecords'    => 'Δεν βρέθηκε',
 'paginate'       => [
     'first'    => 'First',
     'last'     => 'Last',
@@ -104,8 +104,8 @@ return [
     'sortDescending' => ': activate to sort column descending',
 ],
 'export' => [
-    'export'            => 'Export',
-    'copy'              => 'Copy',
+    'export'            => 'Εξαγωγή',
+    'copy'              => 'Αντιγραφή',
     'excel'             => 'Excel',
     'csv'               => 'CSV',
     'pdf'               => 'PDF',
@@ -118,8 +118,8 @@ return [
 'please_fix'          => 'Please fix the following errors:',
 
 // global crud - success / error notification bubbles
-'insert_success' => 'The item has been added successfully.',
-'update_success' => 'The item has been modified successfully.',
+'insert_success' => 'Το αντικείμενο προστέθηκε με επιτυχία.',
+'update_success' => 'Το αντικείμενο επεξεργάστηκε με επιτυχία.',
 
 // CRUD reorder view
 'reorder'                      => 'Reorder',
@@ -130,8 +130,8 @@ return [
 'reorder_error_message'        => 'Your order has not been saved.',
 
 // CRUD yes/no
-'yes' => 'Yes',
-'no'  => 'No',
+'yes' => 'Ναι',
+'no'  => 'Όχι',
 
 // CRUD filters navbar view
 'filters'        => 'Filters',

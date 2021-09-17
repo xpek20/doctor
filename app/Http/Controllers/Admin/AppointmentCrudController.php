@@ -6,6 +6,7 @@ use App\Http\Requests\AppointmentRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Patient;
 use App\Events\Appointment_Creation;
 use Notification;
 use Illuminate\Database\Eloquent\Builder;
@@ -42,7 +43,7 @@ public $doctor;
     {
         CRUD::setModel(\App\Models\Appointment::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/appointment');
-        CRUD::setEntityNameStrings('appointment', 'appointments');
+        CRUD::setEntityNameStrings('Ραντεβού', 'Ραντεβού');
     }
 
     /**
@@ -78,15 +79,15 @@ public $doctor;
         ]);
 
         $this->crud->addColumn([
-            'name' => 'date',
-            'label' => 'Ημερομηνία',
+            'name' => 'start',
+            'label' => 'Έναρξη',
             'type' => 'date'
         ]);
 
         $this->crud->addColumn([
-            'name' => 'time',
-            'label' => 'Ώρα',
-            'type' => 'text'
+            'name' => 'end',
+            'label' => 'Λήξη',
+            'type' => 'date'
         ]);
 
         $this->crud->addColumn([
@@ -139,15 +140,15 @@ public $doctor;
         CRUD::setValidation(AppointmentRequest::class);
         // CRUD::setFromDb(); // fields
 
-        CRUD::field('date')
-        ->label('Ημερομηνία')
-        ->wrapper(['class' => 'form-group col-md-6'])
-        ;
+        // CRUD::field('date')
+        // ->label('Ημερομηνία')
+        // ->wrapper(['class' => 'form-group col-md-6'])
+        // ;
 
-        CRUD::field('time')
-        ->label('Ώρα')
-        ->wrapper(['class' => 'form-group col-md-6'])
-        ;
+        // CRUD::field('time')
+        // ->label('Ώρα')
+        // ->wrapper(['class' => 'form-group col-md-6'])
+        // ;
 
 		CRUD::field('doctor')
                 ->type('select')
@@ -169,9 +170,23 @@ public $doctor;
             ->wrapper(['class' => 'form-group col-md-6'])
             ;
 
-        CRUD::field('patient_name')
-                ->label('Όνομα ασθενή')
-                ;
+            CRUD::field('patient_name')
+            ->type('select2')
+            ->label('Ονοματεπώνυμο Ασθενή')
+            ->entity('Patient')
+            ->model("App\Models\Patient")
+            ->attribute('name')
+            ->inline_create(true)
+            ->wrapper(['class' => 'form-group col-md-6'])
+            ;
+
+        CRUD::field('start')
+        ->label('Έναρξη')
+        ;
+
+        CRUD::field('end')
+        ->label('Λήξη')
+        ;
 
 
         CRUD::field('room')
@@ -221,6 +236,30 @@ public $doctor;
     {
         return $this->fetch(App\Models\Doctor::class);
     }
+
+    // public function index()
+    // {
+    //     $events = [];
+    //     $data = Appointment::all();
+    //     if($data->count()) {
+    //         foreach ($data as $key => $value) {
+    //             $events[] = Calendar::event(
+    //                 $value->title,
+    //                 true,
+    //                 new \DateTime($value->start),
+    //                 new \DateTime($value->end.' +1 day'),
+    //                 null,
+    //                 // Add color and link on event
+	//                 [
+	//                     'color' => '#f05050',
+	//                     'url' => 'pass here url and any route',
+	//                 ]
+    //             );
+    //         }
+    //     }
+    //     $calendar = Calendar::addEvents($events);
+    //     return view('fullcalender', compact('calendar'));
+    // }
 
     
 

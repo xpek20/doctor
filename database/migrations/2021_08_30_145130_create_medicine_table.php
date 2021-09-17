@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDoctorsTable extends Migration
+class CreateMedicineTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateDoctorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Doctors', function (Blueprint $table) {
+        Schema::create('medicine', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('onomateponimo')->unique();
-            $table->string('email')->unique();
-            $table->BigInteger('kinito')->unique();
+            $table->string('name')->unique();
+            $table->bigInteger('quantity');
+            $table->bigInteger('medicine_cat_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDoctorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Doctors');
+        Schema::dropIfExists('medicine');
     }
 }

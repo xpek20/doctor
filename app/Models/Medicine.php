@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use App\Models\MedicineCategory;
 
-class Doctor extends Model
+
+class Medicine extends Model
 {
     use CrudTrait;
-    use Notifiable;
 
     /*
     |--------------------------------------------------------------------------
@@ -17,7 +17,7 @@ class Doctor extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'doctors';
+    protected $table = 'medicine';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -31,31 +31,15 @@ class Doctor extends Model
     |--------------------------------------------------------------------------
     */
 
-    
-
-
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
 
-    public function children()
-    {
-        return $this->hasMany(Appointment::class , 'id');
+    public function medicine_cat_rel(){
+        return $this->belongsTo(MedicineCategory::class, 'medicine_cat_id');
     }
-
-    public function patient_rel()
-    {
-        return $this->hasMany(Patient::class , 'id');
-    }
-
-    
-
-    
-
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -74,6 +58,4 @@ class Doctor extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
-    
 }
