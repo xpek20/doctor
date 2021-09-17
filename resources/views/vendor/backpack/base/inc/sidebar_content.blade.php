@@ -9,6 +9,6 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine') }}'><i class="las la-pills"></i> Φάρμακα</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine-category') }}'><i class="las la-prescription-bottle"></i> Κατηγορίες</a></ul>
 </li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier-category') }}'><i class="las la-warehouse"></i></i> Προμηθευτές</a>
-    <ul><a class='nav-link' href='{{ backpack_url('supplier') }}'><i class="las la-boxes"></i> Κατηγορίες</a></ul>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier') }}'><i class="las la-warehouse"></i>Προμηθευτές</a>
+    <ul><a class='nav-link' href='{{ backpack_url('supplier-category') }}'><i class="las la-boxes"></i> Κατηγορίες</a></ul>
 </li>
