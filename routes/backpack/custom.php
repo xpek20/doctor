@@ -23,4 +23,14 @@ Route::group([
     Route::crud('patient', 'PatientCrudController');
     Route::crud('supplier-category', 'SupplierCategoryCrudController');
     Route::crud('supplier', 'SupplierCrudController');
+    Route::crud('food', 'FoodCrudController');
+    Route::crud('consumable', 'ConsumableCrudController');
+    Route::crud('oros', 'OrosCrudController');
+    Route::crud('eksetasi-aimatos', 'EksetasiAimatosCrudController');
+    Route::crud('xartika', 'XartikaCrudController');
+    Route::crud('galata', 'GalataCrudController');
+    Route::crud('pampers', 'PampersCrudController');
+    Route::crud('medela', 'MedelaCrudController');
+    Route::crud('velones-sirigges', 'VelonesSiriggesCrudController');
+    Route::crud('rammata', 'RammataCrudController');
 }); // this should be the absolute last line of this file
