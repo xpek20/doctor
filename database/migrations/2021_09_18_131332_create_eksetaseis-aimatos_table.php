@@ -15,11 +15,11 @@ class CreateEksetaseisAimatosTable extends Migration
         Schema::create('eksetaseis-aimatos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('siskevasia');
-            $table->decimal('quantity');
-            $table->date('hmeromhnia-liksis');
-            $table->decimal('used')->nullable();
-            $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
+            $table->string('perigrafi');
+            $table->integer('quantity');
+            $table->string('hmeromhnia-liksis')->nullable();
+            $table->integer('used')->nullable();
+            $table->integer('remaining')->virtualAs('quantity - used')->nullable();
             $table->timestamps();
         });
     }

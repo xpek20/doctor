@@ -15,9 +15,9 @@ class CreateConsumablesTable extends Migration
         Schema::create('consumables', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('quantity');
-            $table->decimal('used')->nullable();
-            $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
+            $table->integer('quantity');
+            $table->integer('used')->nullable();
+            $table->integer('remaining')->virtualAs('quantity - used')->nullable();
             $table->timestamps();
         });
     }

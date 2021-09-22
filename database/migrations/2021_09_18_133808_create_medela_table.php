@@ -15,12 +15,13 @@ class CreateMedelaTable extends Migration
         Schema::create('medela', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('kwdikos');
             $table->string('siskevasia');
-            $table->decimal('quantity');
-            $table->decimal('isogeio');
-            $table->decimal('orofos');
-            $table->decimal('used')->nullable();
-            $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
+            $table->integer('quantity');
+            $table->integer('isogeio')->nullable();
+            $table->integer('orofos')->nullable();
+            $table->integer('used')->nullable();
+            $table->integer('remaining')->virtualAs('quantity - used')->nullable();
             $table->timestamps();
         });
     }

@@ -33,4 +33,10 @@ Route::group([
     Route::crud('medela', 'MedelaCrudController');
     Route::crud('velones-sirigges', 'VelonesSiriggesCrudController');
     Route::crud('rammata', 'RammataCrudController');
+    Route::crud('income', 'IncomeCrudController');
+    Route::crud('income-category', 'IncomeCategoryCrudController');
+    Route::crud('expense', 'ExpenseCrudController');
+    Route::crud('expense-category', 'ExpenseCategoryCrudController');
+    // Route::crud('expense-report', 'ExpenseRC');
+    Route::get('charts/expense-summary', 'Charts\ExpenseSummaryChartController@response')->name('charts.expense-summary.index');
 }); // this should be the absolute last line of this file

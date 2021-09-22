@@ -66,11 +66,19 @@ public $doctor;
                                 'attribute' => 'onomateponimo']);
 
         $this->crud->addColumn(['label' => 'Εγχείρηση',
-                                        'type'=> 'select',
-                                        'name'=> 'operation_type',
-                                        'entity'=> 'operation_rel',
-                                        'model' => "App\Models\Operation",
-                                        'attribute' => 'name']);
+                                'type'=> 'select',
+                                'name'=> 'operation_type',
+                                'entity'=> 'operation_rel',
+                                'model' => "App\Models\Operation",
+                                'attribute' => 'name']);
+
+        $this->crud->addColumn(['label' => 'Ασθενής',
+                                'type'=> 'select',
+                                'name'=> 'patient_name',
+                                'entity'=> 'patient_rel',
+                                'model' => "App\Models\Patient",
+                                'attribute' => 'name']);
+
 
         $this->crud->addColumn([
             'name' => 'patient_name',

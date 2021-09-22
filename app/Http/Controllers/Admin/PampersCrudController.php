@@ -48,7 +48,13 @@ class PampersCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'quantity',
             'label' => 'Ποσότητα',
-            'type' => 'text'
+            'type' => 'number'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'isogeio',
+            'label' => 'Ισόγειο',
+            'type' => 'number'
         ]);
 
         $this->crud->addColumn([
@@ -92,14 +98,22 @@ class PampersCrudController extends CrudController
 
         CRUD::field('quantity')
         ->label('Ποσότητα')
+        ->type('number')
+        ;
+
+        CRUD::field('isogeio')
+        ->label('Ισόγειο')
+        ->type('number')
         ;
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        ->type('number')
         ;
 
         CRUD::field('timh')
         ->label('Τιμή')
+        ->type('number')
         ;
 
         /**

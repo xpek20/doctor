@@ -25,3 +25,8 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier') }}'><i class="las la-truck"></i>Προμηθευτές</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier-category') }}'><i class="las la-boxes"></i> Κατηγορίες</a></ul>
 </li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('income') }}'><i class='nav-icon la la-question'></i> Income</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('income-category') }}'><i class='nav-icon la la-question'></i> Income Categories</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('expense') }}'><i class='nav-icon la la-question'></i> Expenses</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-category') }}'><i class='nav-icon la la-question'></i> Expense categories</a></li>

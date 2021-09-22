@@ -54,13 +54,13 @@ class MedelaCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'quantity',
             'label' => 'Ποσότητα',
-            'type' => 'text'
+            'type' => 'number'
         ]);
 
         $this->crud->addColumn([
             'name' => 'orofos',
             'label' => 'Όροφος',
-            'type' => 'text'
+            'type' => 'number'
         ]);
 
         $this->crud->addColumn([
@@ -72,13 +72,13 @@ class MedelaCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'used',
             'label' => 'Ξοδεύτηκαν',
-            'type' => 'text'
+            'type' => 'number'
         ]);
 
         $this->crud->addColumn([
             'name' => 'remaining',
             'label' => 'Υπόλοιπο',
-            'type' => 'text'
+            'type' => 'number'
         ]);
 
         /**
@@ -101,25 +101,33 @@ class MedelaCrudController extends CrudController
         CRUD::field('name')
         ->label('Όνομα')
         ;
-
-        CRUD::field('quantity')
-        ->label('Ποσότητα')
+        
+        CRUD::field('kwdikos')
+        ->label('Κωδικός')
         ;
 
         CRUD::field('siskevasia')
         ->label('Συσκευασία')
         ;
 
+        CRUD::field('quantity')
+        ->label('Ποσότητα')
+        ->type('number')
+        ;
+
         CRUD::field('isogeio')
         ->label('Ισόγειο')
+        ->type('number')
         ;
         
         CRUD::field('orofos')
         ->label('Όροφος')
+        ->type('number')
         ;
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        ->type('number')
         ;
 
         /**

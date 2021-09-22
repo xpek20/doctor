@@ -90,16 +90,18 @@ class RammataCrudController extends CrudController
         ->label('Όνομα')
         ;
 
-        CRUD::field('quantity')
-        ->label('Ποσότητα')
-        ;
-
         CRUD::field('siskevasia')
         ->label('Συσκευασία')
+        ;
+        
+        CRUD::field('quantity')
+        ->label('Ποσότητα')
+        ->type('number')
         ;
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        ->type('number')
         ;
 
         /**

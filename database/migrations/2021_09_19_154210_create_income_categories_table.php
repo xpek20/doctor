@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRammataTable extends Migration
+class CreateIncomeCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateRammataTable extends Migration
      */
     public function up()
     {
-        Schema::create('rammata', function (Blueprint $table) {
+        Schema::create('income_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('siskevasia');
-            $table->integer('quantity');
-            $table->integer('used')->nullable();
-            $table->integer('remaining')->virtualAs('quantity - used')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateRammataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rammata');
+        Schema::dropIfExists('income_categories');
     }
 }

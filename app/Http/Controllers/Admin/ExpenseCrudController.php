@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\EksetasiAimatosRequest;
+use App\Http\Requests\ExpenseRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class EksetasiAimatosCrudController
+ * Class ExpenseCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class EksetasiAimatosCrudController extends CrudController
+class ExpenseCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class EksetasiAimatosCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\EksetasiAimatos::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/eksetasi-aimatos');
-        CRUD::setEntityNameStrings('Εξετάσεις Αίματος', 'Εξετάσεις Αίματος');
+        CRUD::setModel(\App\Models\Expense::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/expense');
+        CRUD::setEntityNameStrings('expense', 'expenses');
     }
 
     /**
@@ -39,39 +39,28 @@ class EksetasiAimatosCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addColumn(['label' => 'Κατηγορία',
+                                'type'=> 'select',
+                                'name'=> 'ExpenseCategory',
+                                'entity'=> 'expense_cat_rel',
+                                'model' => "App\Models\ExpenseCategory",
+                                'attribute' => 'name']);
+
         $this->crud->addColumn([
-            'name' => 'name',
-            'label' => 'Όνομα',
-            'type' => 'text'
+            'name' => 'amount',
+            'label' => 'Ποσό',
+            'type' => 'number'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'amount',
+            'label' => 'Ποσό',
+            'type' => 'number'
         ]);
 
         $this->crud->addColumn([
             'name' => 'perigrafi',
             'label' => 'Περιγραφή',
-            'type' => 'text'
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'hmeromhnia-liksis',
-            'label' => 'Ημερομηνία Λήξης',
-            'type' => 'date'
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'quantity',
-            'label' => 'Ποσότητα',
-            'type' => 'text'
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'used',
-            'label' => 'Ξοδεύτηκαν',
-            'type' => 'text'
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'remaining',
-            'label' => 'Υπόλοιπο',
             'type' => 'text'
         ]);
 
@@ -90,29 +79,31 @@ class EksetasiAimatosCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(EksetasiAimatosRequest::class);
+        CRUD::setValidation(ExpenseRequest::class);
 
-        CRUD::field('name')
-        ->label('Όνομα')
+        CRUD::field('expense_category_id')
+        ->type('select')
+        ->label('Κατηγορία')
+        ->entity('ExpenseCategory')
+        ->model("App\Models\ExpenseCategory")
+        ->attribute('name')
+        ->inline_create(true)
         ;
 
-        CRUD::field('perigrafi')
+        CRUD::field('entry_date')
+        ->label('Ημερομηνία Καταχώρησης')
+        ->type('date')
+        ;
+
+        CRUD::field('amount')
+        ->label('Ποσό')
+        ->type('number')
+        ;
+
+        CRUD::field('description')
         ->label('Περιγραφή')
         ->type('textarea')
         ;
-
-        CRUD::field('hmeromhnia-liksis')
-        ->label('Ημερομηνία Λήξης')
-        ;
-
-        CRUD::field('quantity')
-        ->label('Ποσότητα')
-        ;
-
-        CRUD::field('used')
-        ->label('Ξοδεύτηκαν')
-        ;
-
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

@@ -15,10 +15,11 @@ class CreatePampersTable extends Migration
         Schema::create('pampers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('quantity');
-            $table->decimal('timh');
-            $table->decimal('used')->nullable();
-            $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
+            $table->integer('isogeio')->nullable();
+            $table->integer('quantity');
+            $table->decimal('timh')->nullable();
+            $table->integer('used')->nullable();
+            $table->integer('remaining')->virtualAs('quantity - used')->nullable();
             $table->timestamps();
         });
     }

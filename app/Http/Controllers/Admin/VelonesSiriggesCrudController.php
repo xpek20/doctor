@@ -92,16 +92,18 @@ class VelonesSiriggesCrudController extends CrudController
 
         CRUD::field('quantity')
         ->label('Ποσότητα')
+        ->type('number')
         ;
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        ->type('number')
         ;
 
         CRUD::field('velona')
         ->label('Με βελόνα;')
         ->type('select_from_array')
-        ->options(['one' => 'Ναι', 'two' => 'Όχι'])
+        ->options(['Ναι' => 'Ναι', 'Όχι' => 'Όχι'])
         ->allows_null(false)
         ->default('two')
         ;

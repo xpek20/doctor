@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendAppointmentDetails;
 use App\Http\Controllers\calendarcontroller;
+use App\Http\Controllers\ExpenseRC;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/mail',function() {
 });
 
 Route::get('full-calendar', [calendarcontroller::class, 'index'] );
+

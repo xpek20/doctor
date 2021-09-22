@@ -86,10 +86,12 @@ class GalataCrudController extends CrudController
 
         CRUD::field('quantity')
         ->label('Ποσότητα')
+        ->type('number')
         ;
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        ->type('number')
         ;
 
         /**
