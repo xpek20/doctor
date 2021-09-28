@@ -183,20 +183,6 @@ class PatientCrudController extends CrudController
         CRUD::field('birthday_sizigou')
         ->label('Ημερομηνία Γέννησης Συζήγου')
         ;
-
-
-        
-
-        
-
-        
-
-        
-
-
-
-
-
         
 
         /**

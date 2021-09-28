@@ -4,13 +4,13 @@ Hello,
 <br>
 Έχετε ένα νέο ραντεβού
 <br>
-Ημερομηνία: <b> {{$appointment['date']}} </b>
+Έναρξη: <b> {{$appointment['start']}} </b>
 <br>
-Ώρα: <b> {{$appointment['time']}} </b>
+Λήξη: <b> {{$appointment['end']}} </b>
 <br>    
 Έίδος επέμβασης: <b>{{$appointment->operation_rel['name']}}</b>
 <br>
-Ασθενής: <b>{{$appointment['patient_name']}}</b>
+Ασθενής: <b>{{$appointment->patient_rel['name']}}</b>
 <br>
 Άιθουσα: <b>{{$appointment['room']}}
 

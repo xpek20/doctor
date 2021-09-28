@@ -33,6 +33,8 @@ class AppointmentCrudController extends CrudController
 
 public $appointment;
 public $doctor;
+
+    
     
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -89,13 +91,13 @@ public $doctor;
         $this->crud->addColumn([
             'name' => 'start',
             'label' => 'Έναρξη',
-            'type' => 'date'
+            'type' => 'datetime'
         ]);
 
         $this->crud->addColumn([
             'name' => 'end',
             'label' => 'Λήξη',
-            'type' => 'date'
+            'type' => 'datetime'
         ]);
 
         $this->crud->addColumn([
@@ -240,9 +242,19 @@ public $doctor;
         $this->setupCreateOperation();
     }
 
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
+    }
+
     protected function fetchDoctor()
     {
         return $this->fetch(App\Models\Doctor::class);
+    }
+
+    public function passinfo()
+    {
+        
     }
 
     // public function index()

@@ -1,4 +1,5 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
+<div style="height: 90vh">
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('doctor') }}'><i class="las la-stethoscope"></i> Ιατροί</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('patient') }}'><i class="las la-id-card-alt"></i></i></i> Ασθενείς</a></li>
@@ -6,7 +7,7 @@
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('operation') }}'><i class="las la-user-md"></i> Είδη Εγχειρήσεων</a></ul> 
 
 </li>
-<li class='nav-item'><a class='nav-link'><i class="las la-warehouse"></i> Αποθήκη</a>
+<li class='nav-item' ><a class='nav-link' href="#"><i class="las la-warehouse"></i> Αποθήκη</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine') }}'><i class="las la-pills"></i> Φάρμακα</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('food') }}'><i class="las la-utensils"></i> Φαγητό</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine-category') }}'><i class="las la-prescription-bottle"></i> Κατηγορίες</a></ul>
@@ -22,11 +23,13 @@
     <ul class='nav-item'></ul>
     <ul class='nav-item'></ul>
 </li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier') }}'><i class="las la-truck"></i>Προμηθευτές</a>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier') }}'><i class="las la-truck"></i> Προμηθευτές</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('supplier-category') }}'><i class="las la-boxes"></i> Κατηγορίες</a></ul>
 </li>
-
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('income') }}'><i class='nav-icon la la-question'></i> Income</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('income-category') }}'><i class='nav-icon la la-question'></i> Income Categories</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('expense') }}'><i class='nav-icon la la-question'></i> Expenses</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-category') }}'><i class='nav-icon la la-question'></i> Expense categories</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-reports') }}'> <i class="las la-money-bill-wave"></i> Έσοδα - Έξοδα</a></li>
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('income-category') }}'><i class="las la-bars"></i> Κατηγορίες Εσόδων</a></ul>
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-category') }}'><i class="las la-bars"></i> Κατηγορίες Εξόδων</a></ul>
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('income') }}'><i class="las la-arrow-circle-right"></i> Έσοδα</a></ul>
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('expense') }}'><i class="las la-arrow-circle-left"></i> Έξοδα</a></ul>
+    
+</div>
