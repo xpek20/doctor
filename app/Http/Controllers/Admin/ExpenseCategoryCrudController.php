@@ -28,7 +28,7 @@ class ExpenseCategoryCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ExpenseCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/expense-category');
-        CRUD::setEntityNameStrings('expense category', 'expense categories');
+        CRUD::setEntityNameStrings('Κατηγορία Εξόδων', 'Κατηγορίες Εξόδων');
     }
 
     /**
@@ -64,7 +64,7 @@ class ExpenseCategoryCrudController extends CrudController
 
         CRUD::field('name')
         ->label('Όνομα')
-        ->type('number')
+        ->type('text')
         ;
 
         /**
