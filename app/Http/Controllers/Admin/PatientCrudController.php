@@ -130,7 +130,7 @@ class PatientCrudController extends CrudController
         ;
 
         CRUD::field('diagnwsh_eisodou')
-        ->label('Ημερομηνία Εισόδου')
+        ->label('Διάγνωση Εισόδου')
         ->type('textarea')
         ;
 
