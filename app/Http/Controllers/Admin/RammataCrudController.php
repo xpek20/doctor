@@ -28,7 +28,7 @@ class RammataCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Rammata::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/rammata');
-        CRUD::setEntityNameStrings('Ράμματα', 'Ράμματα');
+        CRUD::setEntityNameStrings('Ράμματος', 'Ράμματα');
     }
 
     /**

@@ -28,7 +28,7 @@ class EksetasiAimatosCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\EksetasiAimatos::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/eksetasi-aimatos');
-        CRUD::setEntityNameStrings('Εξετάσεις Αίματος', 'Εξετάσεις Αίματος');
+        CRUD::setEntityNameStrings('Εξέτασης Αίματος', 'Εξετάσεις Αίματος');
     }
 
     /**
@@ -54,7 +54,7 @@ class EksetasiAimatosCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'hmeromhnia-liksis',
             'label' => 'Ημερομηνία Λήξης',
-            'type' => 'date'
+            'type' => 'text'
         ]);
 
         $this->crud->addColumn([

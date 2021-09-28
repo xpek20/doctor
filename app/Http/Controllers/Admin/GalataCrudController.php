@@ -28,7 +28,7 @@ class GalataCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Galata::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/galata');
-        CRUD::setEntityNameStrings('Γάλα', 'Γάλατα');
+        CRUD::setEntityNameStrings('Γάλατος', 'Γάλατα');
     }
 
     /**

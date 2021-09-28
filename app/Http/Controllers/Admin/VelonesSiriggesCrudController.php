@@ -28,7 +28,7 @@ class VelonesSiriggesCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\VelonesSirigges::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/velones-sirigges');
-        CRUD::setEntityNameStrings('Βελόνες-Σύρριγες', 'Βελόνες-Σύρριγες');
+        CRUD::setEntityNameStrings('Βελόνας ή Σύρριγας', 'Βελόνες-Σύρριγες');
     }
 
     /**

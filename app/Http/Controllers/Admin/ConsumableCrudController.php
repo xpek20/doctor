@@ -28,7 +28,7 @@ class ConsumableCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Consumable::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/consumable');
-        CRUD::setEntityNameStrings('consumable', 'consumables');
+        CRUD::setEntityNameStrings('Αναλώσιμου', 'Αναλώσιμα');
     }
 
     /**

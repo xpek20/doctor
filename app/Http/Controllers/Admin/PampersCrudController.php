@@ -28,7 +28,7 @@ class PampersCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Pampers::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/pampers');
-        CRUD::setEntityNameStrings('pampers', 'pampers');
+        CRUD::setEntityNameStrings('Pamper', 'Pampers');
     }
 
     /**

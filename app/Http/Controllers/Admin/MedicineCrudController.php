@@ -29,7 +29,7 @@ class MedicineCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Medicine::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/medicine');
-        CRUD::setEntityNameStrings('medicine', 'medicines');
+        CRUD::setEntityNameStrings('Φαρμάκου', 'Φάρμακα');
     }
 
     /**

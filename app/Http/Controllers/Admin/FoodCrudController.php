@@ -28,7 +28,7 @@ class FoodCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Food::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/food');
-        CRUD::setEntityNameStrings('food', 'food');
+        CRUD::setEntityNameStrings('Φαγητού', 'Φαγητά');
     }
 
     /**
