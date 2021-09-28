@@ -28,7 +28,7 @@ class MedicineCategoryCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\MedicineCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/medicine-category');
-        CRUD::setEntityNameStrings('medicine category', 'medicine categories');
+        CRUD::setEntityNameStrings('Κατηγορία Φαρμάκου', 'Κατηγορίες Φαρμάκων');
     }
 
     /**

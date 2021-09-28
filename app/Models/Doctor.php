@@ -17,7 +17,7 @@ class Doctor extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'doctors';
+    protected $table = 'Doctors';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];

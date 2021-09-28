@@ -7,10 +7,11 @@
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('operation') }}'><i class="las la-user-md"></i> Είδη Εγχειρήσεων</a></ul> 
 
 </li>
+<li class='nav-item'><a class='nav-link' href='../full-calendar'><i class="las la-calendar"></i> Ημερολόγιο</a>
 <li class='nav-item' ><a class='nav-link' href="#"><i class="las la-warehouse"></i> Αποθήκη</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine') }}'><i class="las la-pills"></i> Φάρμακα</a></ul>
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine-category') }}'><i class="las la-prescription-bottle"></i> Κατηγορίες Φαρμάκων</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('food') }}'><i class="las la-utensils"></i> Φαγητό</a></ul>
-    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('medicine-category') }}'><i class="las la-prescription-bottle"></i> Κατηγορίες</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('consumable') }}'><i class="las la-cut"></i>Αναλώσιμα</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('oros') }}'><i class='nav-icon la la-question'></i> Οροί</a></ul>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('eksetasi-aimatos') }}'><i class="las la-vial"></i> Εξετάσεις Αίματος</a></ul>

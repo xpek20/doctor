@@ -50,18 +50,18 @@ class ExpenseRC extends Controller
         
 
         $expensesSummary = [];
-        // foreach ($groupedExpenses as $exp) {
-        //     foreach ($exp as $line) {
-        //         if (!isset($expensesSummary[$line->expense_categories->expense_cat_rel])) {
-        //             $expensesSummary[$line->expense_categories->expense_cat_rel] = [
-        //                 'name'   => $line->expense_categories->expense_cat_rel,
-        //                 'amount' => 0,
-        //             ];
-        //         }
+        foreach ($groupedExpenses as $exp) {
+            foreach (json_decode($exp) as $line) {
+                if (!isset($expensesSummary[$line->expense_cat_rel->name])) {
+                    $expensesSummary[$line->expense_cat_rel->name] = [
+                        'name'   => $line->expense_cat_rel->name,
+                        'amount' => 0,
+                    ];
+                }
             
-        //         $expensesSummary[$line->expense_categories->expense_cat_rel]['amount'] += $line->amount;
-        //     }
-        // }
+                $expensesSummary[$line->expense_cat_rel->name]['amount'] += $line->amount;
+            }
+        }
 
         
         // dd($groupedIncomes);
