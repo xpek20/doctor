@@ -28,7 +28,7 @@ class ExpenseCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Expense::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/expense');
-        CRUD::setEntityNameStrings('expense', 'expenses');
+        CRUD::setEntityNameStrings('Έξοδο', 'Έξοδα');
     }
 
     /**
