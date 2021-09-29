@@ -40,4 +40,6 @@ Route::group([
     Route::get('expense-reports', 'ExpenseRC@index');
     Route::get('charts/expense-summary', 'Charts\ExpenseSummaryChartController@response')->name('charts.expense-summary.index');
     
+    Route::get('charts/monthly-profit', 'Charts\MonthlyProfitChartController@response')->name('charts.monthly-profit.index');
+    Route::get('charts/montly-expense-cat', 'Charts\MontlyExpenseCatChartController@response')->name('charts.montly-expense-cat.index');
 }); // this should be the absolute last line of this file

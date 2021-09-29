@@ -28,7 +28,7 @@ class SupplierCategoryCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SupplierCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/supplier-category');
-        CRUD::setEntityNameStrings('supplier category', 'supplier categories');
+        CRUD::setEntityNameStrings('Κατηγορίας', 'Κατηγορίες Προμηθευτών');
     }
 
     /**

@@ -28,7 +28,7 @@ class PatientCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Patient::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/patient');
-        CRUD::setEntityNameStrings('patient', 'patients');
+        CRUD::setEntityNameStrings('Ασθενούς', 'Ασθενείς');
     }
 
     /**

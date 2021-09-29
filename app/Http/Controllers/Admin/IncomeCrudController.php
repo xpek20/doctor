@@ -40,7 +40,7 @@ class IncomeCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Income::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/income');
-        CRUD::setEntityNameStrings('Εισόδημα', 'incomes');
+        CRUD::setEntityNameStrings('Εσόδου', 'Έσοδα');
     }
 
     /**
