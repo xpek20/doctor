@@ -9,7 +9,7 @@
 
 @section('content')
 
-    <div class="container mt-5" style="max-width: 700px">
+    <div class="container" >
         <h2 class="h2 text-center mb-5 border-bottom pb-3">Ημερολόγιο</h2>
         <div id='full_calendar_events'></div>
     </div>
@@ -20,11 +20,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src='resources\js\calendar\el.js'></script>
+    {{-- <script src='packages/el.js'></script> --}}
+    
 
     <script>
         $(document).ready(function () {
 
+            var initialLocaleCode = 'el';
             var SITEURL = "{{ url('/') }}";
 
             $.ajaxSetup({
@@ -34,15 +36,37 @@
             });
 
             var calendar = $('#full_calendar_events').fullCalendar({
-                locale:'el',
+                locale: initialLocaleCode,
                 editable: false,
+                height: 670,
                 header: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay,listMonth'
                 },
+                buttonText: {
+                    today: 'Σήμερα',
+                    month: 'Μήνας',
+                    week: 'Εβδομάδα',
+                    day: 'Ημέρα',
+                    list: 'Ατζέντα',
+                },
+                weekText: 'Εβδ',
+                allDayText: 'Ολοήμερο',
+                moreLinkText: 'περισσότερα',
+                noEventsText: 'Δεν υπάρχουν γεγονότα προς εμφάνιση',
+                monthNames: ['Ιανουάριος','Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'],
+                monthNamesShort: ['Ιαν', 'Φεβ', 'Μάρ', 'Μάι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοεμ', 'Δεκ'],
+                dayNames: ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο' , 'Κυριακή'],
+                dayNamesShort: ['Δε', 'Τρι', 'Τετ', 'Πε', 'Πα', 'Σα', 'Κυ'],
                 events: SITEURL + "/full-calendar",
                 displayEventTime: false,
+                viewDisplay: function(view) {
+            
+                },
+                windowResize: function(view) {
+            
+                },
                 
                 eventRender: function (event, element, view) {
                     if (event.allDay === 'true') {
@@ -59,6 +83,30 @@
             toastr.success(message, 'Event');            
         }
 
+
+
+        // document.addEventListener('DOMContentLoaded' , function(){
+        //     var SITEURL = "{{ url('/') }}";
+        //     var initialLocaleCode = 'el';
+        //     var querylocale = 'en';
+        //     var calendarEl = document.getElementById('full_calendar_events');
+        //     var calendar = new FullCalendar.Calendar (calendarEl, {
+        //         headerToolbar: {
+        //         left: 'prev,next today',
+        //         center: 'title',
+        //         right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        //     },
+        //     locale: 'initialLocaleCode',
+        //     events: SITEURL + "/full-calendar",
+            
+        // });
+        // calendar.setOption('querylocale');
+        // calendar.render();
+        
+
+    // });
+
+    
     </script>
 
 

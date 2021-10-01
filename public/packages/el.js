@@ -1,4 +1,4 @@
-FullCalendar.globalLocales.push(function () {
+fullCalendar.globalLocales.push(function () {
   'use strict';
 
   var el = {

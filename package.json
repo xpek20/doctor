@@ -21,6 +21,7 @@
         "autoprefixer": "^10.3.6",
         "g": "^2.0.1",
         "npm": "^7.24.1",
-        "tailwindcss": "^2.2.16"
+        "tailwindcss": "^2.2.16",
+        "tui-calendar": "^1.14.1"
     }
 }

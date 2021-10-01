@@ -47,69 +47,34 @@ class MonthlyProfitChartController extends ChartController
      */
     public function data()
     {
-       
-            // $expenses = Expense::whereDate('entry_date' , today()->subDays($days_backwards))->get(['amount']);
-            // $income = Income::whereDate('entry_date' , today()->subDays($days_backwards))->get(['amount']);
-            // $profit = $income - $expenses;
-           
-
-            $from = Carbon::parse(sprintf(
-                '%s-%s-01',
-                request()->query('y', Carbon::now()->year),
-                request()->query('m', Carbon::now()->month)
-            ));
-            $to      = clone $from;
-            $to->day = $to->daysInMonth;
-    
-            $expenses = Expense::with('expense_cat_rel')
-                ->whereBetween('entry_date', [$from, $to]);
-            
-    
-            $incomes = Income::with('income_cat_rel')
-                ->whereBetween('entry_date', [$from, $to]);
-            
-    
-            $expensesTotal   = $expenses->sum('amount');
-            $incomesTotal    = $incomes->sum('amount');
-            $groupedExpenses = $expenses->whereNotNull('expense_category_id')->orderBy('amount', 'desc')->get()->groupBy('expense_category_id');
-            $groupedIncomes = $incomes->whereNotNull('income_category_id')->orderBy('amount', 'desc')->get()->groupBy('income_category_id');
-            
-            // echo $groupedIncomes;
-            
-            
-            $profit          = $incomesTotal - $expensesTotal;
-            
-    
-            $expensesSummary = [];
-            foreach ($groupedExpenses as $exp) {
-                foreach (json_decode($exp) as $line) {
-                    if (!isset($expensesSummary[$line->expense_cat_rel->name])) {
-                        $expensesSummary[$line->expense_cat_rel->name] = [
-                            'name'   => $line->expense_cat_rel->name,
-                            'amount' => 0,
-                        ];
-                    }
-                
-                    $expensesSummary[$line->expense_cat_rel->name]['amount'] += $line->amount;
-                }
-            }
-    
-            
-            // dd($groupedIncomes);
+        for ($days_backwards = 30; $days_backwards >= 0; $days_backwards--) {
+            $expenses = Expense::all();
             $incomesSummary = [];
-            // dd($groupedIncomes);
-            foreach ($groupedIncomes as $inc) {
-                foreach (json_decode($inc) as $line) {
-                    if (!isset($incomesSummary[$line->income_cat_rel->name])) {
-                        $incomesSummary[$line->income_cat_rel->name] = [
-                            'name'   => $line->income_cat_rel->name,
-                            'amount' => 0,
-                        ];
-                    }
-                    $incomesSummary[$line->income_cat_rel->name]['amount'] += $line->amount;
+            foreach(json_decode($expenses) as $line){
+                if (!isset($incomesSummary[$line->amount])){
+                    
                 }
+
             }
+            $expenses = Expense::whereDate('entry_date' , today()->subDays($days_backwards))->get(['amount']);
+            $income = Income::whereDate('entry_date' , today()->subDays($days_backwards))->get(['amount']);
+            $profit = $income - $expenses;
+
+        }
+
+        $this->chart->dataset('Έξοδα','line' , $expenses)
+        ->color('rgb(66, 186, 150)')
+        ->backgroundColor('rgba(66, 186, 150, 0.4)');
             
+        $this->chart->dataset('Έσοδα', 'line', $income)
+        ->color('rgb(96, 92, 168)')
+        ->backgroundColor('rgba(96, 92, 168, 0.4)');  
+
+        $this->chart->dataset('Κέρδος', 'line', $profit)
+            ->color('rgb(255, 193, 7)')
+            ->backgroundColor('rgba(255, 193, 7, 0.4)');
+
+           
         }
     
 }

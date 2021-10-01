@@ -1,4 +1,18 @@
 @extends(backpack_view('blank'))
+
+@php 
+
+$widgets['after_content'][] = [
+	  'type'         => 'chart',
+	  'wrapperClass'  => 'col-md-6',
+	  'heading'      => 'Test',
+	  'controller'      => \App\Http\Controllers\Admin\Charts\MonthlyProfitChartController::class ,
+	  
+	];
+
+
+@endphp
+
 @section('content')
 <div class="row">
     <div class="col">
