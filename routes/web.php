@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendAppointmentDetails;
 use App\Http\Controllers\calendarcontroller;
+use App\Http\Controllers\anesthcontroller;
 use App\Http\Controllers\ExpenseRC;
 use App\Http\Controllers\newCalendarController;
 
@@ -30,4 +31,5 @@ Route::get('appointment/create/mail','App\Http\Controllers\AppointmentEmail@inde
 
 Route::get('full-calendar', [calendarcontroller::class, 'index'])->name('listevents');
 Route::get('calendar' , [newCalendarController::class, 'index']);
+Route::get('full-calendar-anesth', [anesthcontroller::class, 'index']);
 

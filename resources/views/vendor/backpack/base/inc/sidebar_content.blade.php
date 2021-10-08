@@ -5,9 +5,13 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('patient') }}'><i class="las la-id-card-alt"></i></i></i> Ασθενείς</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('appointment') }}'><i class="las la-notes-medical"></i> Ραντεβού</a>
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('operation') }}'><i class="las la-user-md"></i> Είδη Εγχειρήσεων</a></ul> 
+    <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('extraxrewsei') }}'><i class="las la-coins"></i> Έξτρα Χρεώσεις</a></ul>
 
 </li>
 <li class='nav-item'><a class='nav-link' href='../full-calendar'><i class="las la-calendar"></i> Ημερολόγιο</a>
+    <ul class="nav-item"><a class='nav-link' href='{{ backpack_url('anesthpgrogram') }}'><i class="las la-calendar-times"></i></i> Πρόγραμμα Αναισθησιολόγου</a></ul>
+</li>
+
 
 <li class="nav-item nav-dropdown">
     <a class='nav-link nav-dropdown-toggle' href="#"><i class="las la-warehouse"></i> Αποθήκη</a>

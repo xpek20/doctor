@@ -59,7 +59,17 @@
                 monthNamesShort: ['Ιαν', 'Φεβ', 'Μάρ', 'Μάι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοεμ', 'Δεκ'],
                 dayNames: ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο' , 'Κυριακή'],
                 dayNamesShort: ['Δε', 'Τρι', 'Τετ', 'Πε', 'Πα', 'Σα', 'Κυ'],
-                events: SITEURL + "/full-calendar",
+                // events: SITEURL + "/full-calendar",
+                eventSources: [
+                    {
+                        url: SITEURL + "/full-calendar",
+                        
+                    },
+                    {
+                        url: SITEURL + "/full-calendar-anesth",
+                        color: "#c91b0e"
+                    }
+                ],
                 displayEventTime: false,
                 viewDisplay: function(view) {
             

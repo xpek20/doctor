@@ -80,6 +80,13 @@ public $doctor;
                                 'entity'=> 'patient_rel',
                                 'model' => "App\Models\Patient",
                                 'attribute' => 'name']);
+        
+        $this->crud->addColumn(['label' => 'Έξτρα Χρεώσεις',
+                                'type'=> 'select_multiple',
+                                'name'=> 'extra_xrewseis',
+                                'entity'=> 'extra_xrewseis',
+                                'model' => "App\Models\Extraxrewsei",
+                                'attribute' => 'name']);
 
 
         $this->crud->addColumn([
@@ -185,6 +192,18 @@ public $doctor;
             ->label('Ονοματεπώνυμο Ασθενή')
             ->entity('Patient')
             ->model("App\Models\Patient")
+            ->attribute('name')
+            ->inline_create(true)
+            ->wrapper(['class' => 'form-group col-md-6'])
+            ;
+
+            CRUD::field('extra_xrewseis')
+            ->type('select2_multiple')
+            ->pivot('extraxrewseis_appointments')
+            ->label('Έξτρα χρεώσεις')
+            ->pivot(true)
+            ->entity('Extraxrewsei')
+            ->model("App\Models\Extraxrewsei")
             ->attribute('name')
             ->inline_create(true)
             ->wrapper(['class' => 'form-group col-md-6'])
