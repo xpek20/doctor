@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\GalataRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class GalataCrudController
@@ -29,6 +30,12 @@ class GalataCrudController extends CrudController
         CRUD::setModel(\App\Models\Galata::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/galata');
         CRUD::setEntityNameStrings('Γάλατος', 'Γάλατα');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

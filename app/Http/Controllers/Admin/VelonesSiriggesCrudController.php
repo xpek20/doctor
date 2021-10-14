@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\VelonesSiriggesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class VelonesSiriggesCrudController
@@ -29,6 +30,12 @@ class VelonesSiriggesCrudController extends CrudController
         CRUD::setModel(\App\Models\VelonesSirigges::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/velones-sirigges');
         CRUD::setEntityNameStrings('Βελόνας ή Σύρριγας', 'Βελόνες-Σύρριγες');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

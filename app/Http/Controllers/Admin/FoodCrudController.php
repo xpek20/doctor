@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\FoodRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class FoodCrudController
@@ -29,6 +30,12 @@ class FoodCrudController extends CrudController
         CRUD::setModel(\App\Models\Food::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/food');
         CRUD::setEntityNameStrings('Φαγητού', 'Φαγητά');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

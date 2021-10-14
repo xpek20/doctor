@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\DoctorRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class DoctorCrudController
@@ -30,6 +31,12 @@ class DoctorCrudController extends CrudController
         CRUD::setModel(\App\Models\Doctor::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/doctor');
         CRUD::setEntityNameStrings('doctor', 'doctors');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

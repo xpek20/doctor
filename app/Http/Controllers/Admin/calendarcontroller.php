@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Anesthpgrogram;
 use Illuminate\Support\Facades\Log;

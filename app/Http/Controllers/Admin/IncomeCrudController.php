@@ -7,6 +7,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -41,6 +42,12 @@ class IncomeCrudController extends CrudController
         CRUD::setModel(\App\Models\Income::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/income');
         CRUD::setEntityNameStrings('Εσόδου', 'Έσοδα');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

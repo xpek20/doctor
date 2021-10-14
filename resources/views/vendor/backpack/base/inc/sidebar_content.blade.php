@@ -1,3 +1,4 @@
+@hasrole('Admin')
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <div style="height: 90vh">
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
@@ -8,7 +9,7 @@
     <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('extraxrewsei') }}'><i class="las la-coins"></i> Έξτρα Χρεώσεις</a></ul>
 
 </li>
-<li class='nav-item'><a class='nav-link' href='../full-calendar'><i class="las la-calendar"></i> Ημερολόγιο</a>
+<li class='nav-item'><a class='nav-link' href={{ backpack_url('full-calendar') }}><i class="las la-calendar"></i> Ημερολόγιο</a>
     <ul class="nav-item"><a class='nav-link' href='{{ backpack_url('anesthpgrogram') }}'><i class="las la-calendar-times"></i></i> Πρόγραμμα Αναισθησιολόγου</a></ul>
 </li>
 
@@ -42,5 +43,24 @@
         <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('expense') }}'><i class="las la-arrow-circle-left"></i> Έξοδα</a></ul>
         <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-reports') }}'> <i class="las la-wallet"></i> Σύνοψη</a></ul>
     </ul>
+    <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Προστασία</a>
+        <ul class="nav-dropdown-items">
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-user"></i> <span>Χρήστες</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('role') }}"><i class="nav-icon la la-id-badge"></i> <span>Ρόλοι</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('permission') }}"><i class="nav-icon la la-key"></i> <span>Δικαιώματα</span></a></li>
+        </ul>
+    </li>
 </li>
 </div>
+@else
+<div style="height: 90vh">
+    <li class='nav-item'><a class='nav-link' href='{{ backpack_url('appointment') }}'><i class="las la-notes-medical"></i> Ραντεβού</a>
+        <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('operation') }}'><i class="las la-user-md"></i> Είδη Εγχειρήσεων</a></ul> 
+        <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('extraxrewsei') }}'><i class="las la-coins"></i> Έξτρα Χρεώσεις</a></ul>
+    </li>
+    <li class='nav-item'><a class='nav-link' href={{ backpack_url('full-calendar') }}><i class="las la-calendar"></i> Ημερολόγιο</a>
+        <ul class="nav-item"><a class='nav-link' href='{{ backpack_url('anesthpgrogram') }}'><i class="las la-calendar-times"></i></i> Πρόγραμμα Αναισθησιολόγου</a></ul>
+    </li>
+</div>
+@endhasrole

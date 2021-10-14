@@ -1,5 +1,6 @@
 @extends(backpack_view('blank'))
 
+
 @php 
 
 $widgets['after_content'][] = [

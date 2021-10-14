@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ConsumableRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class ConsumableCrudController
@@ -29,6 +30,12 @@ class ConsumableCrudController extends CrudController
         CRUD::setModel(\App\Models\Consumable::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/consumable');
         CRUD::setEntityNameStrings('Αναλώσιμου', 'Αναλώσιμα');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

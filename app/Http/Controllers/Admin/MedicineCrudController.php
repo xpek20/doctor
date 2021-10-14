@@ -6,6 +6,7 @@ use App\Http\Requests\MedicineRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use App\Models\MedicineCategory;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class MedicineCrudController
@@ -30,6 +31,12 @@ class MedicineCrudController extends CrudController
         CRUD::setModel(\App\Models\Medicine::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/medicine');
         CRUD::setEntityNameStrings('Φαρμάκου', 'Φάρμακα');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

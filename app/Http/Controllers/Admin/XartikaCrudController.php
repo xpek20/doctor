@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\XartikaRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class XartikaCrudController
@@ -29,6 +30,12 @@ class XartikaCrudController extends CrudController
         CRUD::setModel(\App\Models\Xartika::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/xartika');
         CRUD::setEntityNameStrings('Χαρτικού', 'Χαρτικά');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

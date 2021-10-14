@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\EksetasiAimatosRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EksetasiAimatosCrudController
@@ -29,6 +30,12 @@ class EksetasiAimatosCrudController extends CrudController
         CRUD::setModel(\App\Models\EksetasiAimatos::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/eksetasi-aimatos');
         CRUD::setEntityNameStrings('Εξέτασης Αίματος', 'Εξετάσεις Αίματος');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

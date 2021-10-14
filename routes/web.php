@@ -29,7 +29,7 @@ Route::get('appointment/create/mail','App\Http\Controllers\AppointmentEmail@inde
 //     return new SendAppointmentDetails;
 // });
 
-Route::get('full-calendar', [calendarcontroller::class, 'index'])->name('listevents');
+// Route::get('admin/full-calendar', [calendarcontroller::class, 'index']);
 Route::get('calendar' , [newCalendarController::class, 'index']);
 Route::get('full-calendar-anesth', [anesthcontroller::class, 'index']);
 

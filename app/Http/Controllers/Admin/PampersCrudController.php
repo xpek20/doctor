@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\PampersRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PampersCrudController
@@ -29,6 +30,12 @@ class PampersCrudController extends CrudController
         CRUD::setModel(\App\Models\Pampers::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/pampers');
         CRUD::setEntityNameStrings('Pamper', 'Pampers');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

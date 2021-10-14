@@ -62,7 +62,7 @@
                 // events: SITEURL + "/full-calendar",
                 eventSources: [
                     {
-                        url: SITEURL + "/full-calendar",
+                        url: SITEURL + "/admin/full-calendar",
                         
                     },
                     {

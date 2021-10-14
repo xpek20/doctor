@@ -5,6 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\ExpenseCategoryRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
+
+
+
 
 /**
  * Class ExpenseCategoryCrudController
@@ -29,6 +35,13 @@ class ExpenseCategoryCrudController extends CrudController
         CRUD::setModel(\App\Models\ExpenseCategory::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/expense-category');
         CRUD::setEntityNameStrings('Κατηγορίας', 'Κατηγορίες Εξόδων');
+        
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
+
     }
 
     /**

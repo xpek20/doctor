@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\MedelaRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class MedelaCrudController
@@ -29,6 +30,12 @@ class MedelaCrudController extends CrudController
         CRUD::setModel(\App\Models\Medela::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/medela');
         CRUD::setEntityNameStrings('medela', 'medelas');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

@@ -44,4 +44,6 @@ Route::group([
     Route::get('charts/montly-expense-cat', 'Charts\MontlyExpenseCatChartController@response')->name('charts.montly-expense-cat.index');
     Route::crud('anesthpgrogram', 'AnesthpgrogramCrudController');
     Route::crud('extraxrewsei', 'ExtraxrewseiCrudController');
+    Route::get('full-calendar', 'calendarcontroller@index');
+    Route::get('full-calendar-anesth', 'anesthcontroller@index');
 }); // this should be the absolute last line of this file

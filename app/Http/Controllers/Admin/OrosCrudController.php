@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OrosRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class OrosCrudController
@@ -29,6 +30,12 @@ class OrosCrudController extends CrudController
         CRUD::setModel(\App\Models\Oros::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/oros');
         CRUD::setEntityNameStrings('Ορού', 'Οροί');
+
+        $user = Auth::user();
+        if ($user->hasRole('Μαία'))
+        {
+            $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**

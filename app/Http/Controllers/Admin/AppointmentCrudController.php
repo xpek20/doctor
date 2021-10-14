@@ -12,6 +12,7 @@ use Notification;
 use Illuminate\Database\Eloquent\Builder;
 use App\Notifications\AppointmentSuccessful;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Auth;
 
 
 
