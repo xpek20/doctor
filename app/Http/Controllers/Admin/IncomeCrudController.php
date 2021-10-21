@@ -48,6 +48,10 @@ class IncomeCrudController extends CrudController
         {
             $this->crud->denyAccess(['list', 'create', 'delete', 'update']);
         }
+        else 
+        {
+            $this->crud->allowAccess(['list', 'create', 'delete', 'update']);
+        }
     }
 
     /**
@@ -58,6 +62,9 @@ class IncomeCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+
+        $user = Auth::user();
+
         $this->crud->addColumn(['label' => 'Κατηγορία',
                                 'type'=> 'select',
                                 'name'=> 'IncomeCategory',
@@ -66,15 +73,53 @@ class IncomeCrudController extends CrudController
                                 'attribute' => 'name']);
 
 
-        $this->crud->addColumn([
-            'name' => 'amount',
-            'label' => 'Ποσό',
-            'type' => 'number',
-            'decimals' => 2,
-            'dec_point' => ',',
-            'suffix' => '€'
+        if ($user->hasRole('Admin')){
+            
+            $this->crud->addColumn([
+                'name' => 'amount',
+                'label' => 'Ποσό Α',
+                'type' => 'number',
+                'decimals' => 2,
+                'dec_point' => ',',
+                'suffix' => '€'
+    
+            ]);
 
-        ]);
+            $this->crud->addColumn([
+                'name' => 'amount_b',
+                'label' => 'Ποσό Β',
+                'type' => 'number',
+                'decimals' => 2,
+                'dec_point' => ',',
+                'suffix' => '€'
+    
+            ]);
+
+            $this->crud->addColumn([
+                'name' => 'final_amount',
+                'label' => 'Συνολικό',
+                'type' => 'number',
+                'decimals' => 2,
+                'dec_point' => ',',
+                'suffix' => '€'
+    
+            ]);
+
+        }
+        elseif ($user->hasRole('AdminB'))
+        {
+            $this->crud->addColumn([
+                'name' => 'amount',
+                'label' => 'Ποσό Α',
+                'type' => 'number',
+                'decimals' => 2,
+                'dec_point' => ',',
+                'suffix' => '€'
+    
+            ]);
+
+        }
+        
 
         $this->crud->addColumn([
             'name' => 'description',
@@ -117,6 +162,10 @@ class IncomeCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+
+        $user = Auth::user();
+
+
         CRUD::setValidation(IncomeRequest::class);
 
         CRUD::field('income_category_id')
@@ -133,12 +182,34 @@ class IncomeCrudController extends CrudController
         ->type('date')
         ;
 
-        CRUD::field('amount')
-        ->label('Ποσό')
-        ->type('number')
-        ->attributes(['step' => '0.01'])
-        ->prefix('€')
-        ;
+        
+        if ($user->hasRole('Admin'))
+        {
+            CRUD::field('amount')
+            ->label('Ποσό Α')
+            ->type('number')
+            ->attributes(['step' => '0.01'])
+            ->prefix('€')
+            ;
+
+            CRUD::field('amount_b')
+            ->label('Ποσό Β')
+            ->type('number')
+            ->attributes(['step' => '0.01'])
+            ->prefix('€')
+            ;    
+
+        }
+        elseif ($user->hasRole('AdminB')){
+            CRUD::field('amount')
+            ->label('Ποσό Α')
+            ->type('number')
+            ->attributes(['step' => '0.01'])
+            ->prefix('€')
+            ;
+        }
+        
+        
 
         CRUD::field('description')
         ->label('Περιγραφή')

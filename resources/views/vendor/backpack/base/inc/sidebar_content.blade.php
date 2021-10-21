@@ -1,4 +1,4 @@
-@hasrole('Admin')
+@hasanyrole('Admin|Γραμματεία|AdminB')
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <div style="height: 90vh">
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
@@ -44,7 +44,7 @@
         <ul class='nav-item'><a class='nav-link' href='{{ backpack_url('expense-reports') }}'> <i class="las la-wallet"></i> Σύνοψη</a></ul>
     </ul>
     <li class="nav-item nav-dropdown">
-        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Προστασία</a>
+        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i>Προστασία</a>
         <ul class="nav-dropdown-items">
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-user"></i> <span>Χρήστες</span></a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('role') }}"><i class="nav-icon la la-id-badge"></i> <span>Ρόλοι</span></a></li>
@@ -63,4 +63,4 @@
         <ul class="nav-item"><a class='nav-link' href='{{ backpack_url('anesthpgrogram') }}'><i class="las la-calendar-times"></i></i> Πρόγραμμα Αναισθησιολόγου</a></ul>
     </li>
 </div>
-@endhasrole
+@endhasanyrole

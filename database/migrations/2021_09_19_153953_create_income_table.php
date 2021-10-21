@@ -16,9 +16,11 @@ class CreateIncomeTable extends Migration
             $table->bigIncrements('id');
             $table->date('entry_date')->nullable();
             $table->decimal('amount', 15, 10)->nullable();
+            $table->decimal('amount_b', 15, 10)->nullable();
             $table->string('description')->nullable();
             $table->string('income_category_id')->nullable();
             $table->string('image')->nullable();
+            $table->integer('final_amount')->virtualAs('amount + amount_b')->nullable();
             $table->timestamps();
         });
     }
