@@ -6,11 +6,12 @@ use App\Events\Appointment_Creation;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use \Venturecraft\Revisionable\RevisionableTrait;
 
 
 class Appointment extends Model
 {
-    use CrudTrait, Notifiable;
+    use CrudTrait, Notifiable, \Venturecraft\Revisionable\RevisionableTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -77,6 +78,11 @@ class Appointment extends Model
     public function extra_xrewseis()
     {
         return $this->belongsToMany(Extraxrewsei::class , 'extraxrewseis_appointments', 'appointment_id', 'extra_id');
+    }
+
+    public function identifiableName()
+    {
+        return $this->name;
     }
 
     

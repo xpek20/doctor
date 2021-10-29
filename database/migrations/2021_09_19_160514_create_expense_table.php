@@ -17,6 +17,7 @@ class CreateExpenseTable extends Migration
             $table->date('entry_date')->nullable();
             $table->decimal('amount', 15, 2)->nullable();
             $table->string('description')->nullable();
+            $table->string('image')->nullable();
             $table->string('expense_category_id')->nullable();
             $table->timestamps();
         });

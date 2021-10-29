@@ -45,5 +45,11 @@ Route::group([
     Route::crud('anesthpgrogram', 'AnesthpgrogramCrudController');
     Route::crud('extraxrewsei', 'ExtraxrewseiCrudController');
     Route::get('full-calendar', 'calendarcontroller@index');
+    Route::get('/apothiki', function () {
+        return view('admin.apothiki');
+    });
+    Route::get('/esoda-eksoda', function () {
+        return view('admin.esoda-eksoda');
+    });
     // Route::get('full-calendar-anesth', 'anesthcontroller@index');
 }); // this should be the absolute last line of this file

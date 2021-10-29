@@ -3,13 +3,13 @@
 
 @php 
 
-$widgets['after_content'][] = [
-	  'type'         => 'chart',
-	  'wrapperClass'  => 'col-md-6',
-	  'heading'      => 'Test',
-	  'controller'      => \App\Http\Controllers\Admin\Charts\MonthlyProfitChartController::class ,
+// $widgets['after_content'][] = [
+// 	  'type'         => 'chart',
+// 	  'wrapperClass'  => 'col-md-6',
+// 	  'heading'      => 'Test',
+// 	  'controller'      => \App\Http\Controllers\Admin\Charts\MonthlyProfitChartController::class ,
 	  
-	];
+// 	];
 
 
 @endphp
@@ -32,7 +32,7 @@ $widgets['after_content'][] = [
                     </select>
                 </div>
                 <div class="col-3 form-group">
-                    <label class="control-label" for="m">Έτος</label>
+                    <label class="control-label" for="m">Μήνας</label>
                     <select name="m" for="m" class="form-control">
                         @foreach(cal_info(0)['months'] as $month)
                             <option value="{{ $month }}" @if($month===old('m', Request::get('m', date('F')))) selected @endif>
@@ -43,7 +43,7 @@ $widgets['after_content'][] = [
                 </div>
                 <div class="col-4">
                     <label class="control-label">&nbsp;</label><br>
-                    <button class="btn btn-primary" type="submit">Μήνας</button>
+                    <button class="btn btn-primary" type="submit">Εντάξει</button>
                 </div>
             </div>
         </form>

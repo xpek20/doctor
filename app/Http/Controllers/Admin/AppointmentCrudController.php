@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 /**
  * Class AppointmentCrudController
  * @package App\Http\Controllers\Admin
@@ -31,6 +32,8 @@ class AppointmentCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+    use \Backpack\ReviseOperation\ReviseOperation;
+    
 
 public $appointment;
 public $doctor;
@@ -47,6 +50,8 @@ public $doctor;
         CRUD::setModel(\App\Models\Appointment::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/appointment');
         CRUD::setEntityNameStrings('Ραντεβού', 'Ραντεβού');
+        $this->crud->orderBy('start', 'DESC');
+
     }
 
     /**
@@ -102,11 +107,6 @@ public $doctor;
             'type' => 'datetime'
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'end',
-            'label' => 'Λήξη',
-            'type' => 'datetime'
-        ]);
 
         $this->crud->addColumn([
             'name' => 'room',

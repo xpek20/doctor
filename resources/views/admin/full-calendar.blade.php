@@ -36,7 +36,7 @@
             });
 
             var calendar = $('#full_calendar_events').fullCalendar({
-                locale: initialLocaleCode,
+                // locale: initialLocaleCode,
                 editable: false,
                 height: 670,
                 header: {
@@ -52,13 +52,14 @@
                     list: 'Ατζέντα',
                 },
                 weekText: 'Εβδ',
+                firstDay: 1,
                 allDayText: 'Ολοήμερο',
                 moreLinkText: 'περισσότερα',
                 noEventsText: 'Δεν υπάρχουν γεγονότα προς εμφάνιση',
                 monthNames: ['Ιανουάριος','Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος'],
                 monthNamesShort: ['Ιαν', 'Φεβ', 'Μάρ', 'Μάι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοεμ', 'Δεκ'],
-                dayNames: ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο' , 'Κυριακή'],
-                dayNamesShort: ['Δε', 'Τρι', 'Τετ', 'Πε', 'Πα', 'Σα', 'Κυ'],
+                dayNames: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'],
+                dayNamesShort: ['Κυ', 'Δε', 'Τρι', 'Τετ', 'Πε', 'Πα', 'Σα'],
                 // events: SITEURL + "/full-calendar",
                 eventSources: [
                     {

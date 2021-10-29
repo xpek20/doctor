@@ -59,16 +59,23 @@ class ExpenseCrudController extends CrudController
             'type' => 'number'
         ]);
 
-        $this->crud->addColumn([
-            'name' => 'amount',
-            'label' => 'Ποσό',
-            'type' => 'number'
-        ]);
 
         $this->crud->addColumn([
             'name' => 'perigrafi',
             'label' => 'Περιγραφή',
             'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'image',
+            'label' => 'Τιμολόγιο',
+            'type' => 'image'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'entry_date',
+            'label' => 'Ημερομηνία Καταχώρησης',
+            'type' => 'date'
         ]);
 
         /**
@@ -105,12 +112,21 @@ class ExpenseCrudController extends CrudController
         CRUD::field('amount')
         ->label('Ποσό')
         ->type('number')
+        ->attributes(['step' => '0.01'])
+        ->prefix('€')
         ;
 
         CRUD::field('description')
         ->label('Περιγραφή')
         ->type('textarea')
         ;
+
+        CRUD::field('image')
+        ->label('Τιμολόγιο')
+        ->type('image')
+        ;
+
+
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
