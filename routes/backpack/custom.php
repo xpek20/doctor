@@ -51,5 +51,8 @@ Route::group([
     Route::get('/esoda-eksoda', function () {
         return view('admin.esoda-eksoda');
     });
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
     // Route::get('full-calendar-anesth', 'anesthcontroller@index');
 }); // this should be the absolute last line of this file
