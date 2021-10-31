@@ -29,7 +29,7 @@ class OperationCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Operation::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/operation');
-        CRUD::setEntityNameStrings('operation', 'operations');
+        CRUD::setEntityNameStrings('Είδους Εγχείρησης', 'Είδη Εγχειρήσεων');
     }
 
     /**

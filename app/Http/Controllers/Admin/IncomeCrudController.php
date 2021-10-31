@@ -52,6 +52,7 @@ class IncomeCrudController extends CrudController
         {
             $this->crud->allowAccess(['list', 'create', 'delete', 'update']);
         }
+        
     }
 
     /**
