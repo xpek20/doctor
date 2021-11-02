@@ -81,7 +81,7 @@ class IncomeCrudController extends CrudController
                 'label' => 'Ποσό Α',
                 'type' => 'number',
                 'decimals' => 2,
-                'dec_point' => ',',
+                'dec_point' => '.',
                 'suffix' => '€'
     
             ]);
@@ -91,7 +91,7 @@ class IncomeCrudController extends CrudController
                 'label' => 'Ποσό Β',
                 'type' => 'number',
                 'decimals' => 2,
-                'dec_point' => ',',
+                'dec_point' => '.',
                 'suffix' => '€'
     
             ]);
@@ -101,7 +101,7 @@ class IncomeCrudController extends CrudController
                 'label' => 'Συνολικό',
                 'type' => 'number',
                 'decimals' => 2,
-                'dec_point' => ',',
+                'dec_point' => '.',
                 'suffix' => '€'
     
             ]);

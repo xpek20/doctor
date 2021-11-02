@@ -31,13 +31,19 @@ class AppointmentCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\InlineCreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \Backpack\ReviseOperation\ReviseOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     
 
 public $appointment;
 public $doctor;
+
+    public function fetchDoctor()
+    {
+        return $this->fetch(Doctor::class);
+
+    }
 
     
     
@@ -65,8 +71,34 @@ public $doctor;
     protected function setupListOperation()
     {
          //
+         $user = Auth::user();
 
 
+
+         if (! $user->hasRole('Μαία'))
+         {
+            $this->crud->addColumn(['label' => 'Ασθενής',
+            'type'=> 'select',
+            'name'=> 'patient_name',
+            'entity'=> 'patient_rel',
+            'model' => "App\Models\Patient",
+            'attribute' => 'name']);
+
+            $this->crud->addColumn(['label' => 'Έξτρα Χρεώσεις',
+                                'type'=> 'select_multiple',
+                                'name'=> 'extra_xrewseis',
+                                'entity'=> 'extra_xrewseis',
+                                'model' => "App\Models\Extraxrewsei",
+                                'attribute' => 'name']);
+
+            $this->crud->addColumn([
+                'name' => 'patient_name',
+                'label' => 'Ασθενής',
+                'type' => 'text'
+            ]);
+
+
+         }
 
         $this->crud->addColumn(['label' => 'Γιατρός',
                                 'type'=> 'select',
@@ -82,26 +114,12 @@ public $doctor;
                                 'model' => "App\Models\Operation",
                                 'attribute' => 'name']);
 
-        $this->crud->addColumn(['label' => 'Ασθενής',
-                                'type'=> 'select',
-                                'name'=> 'patient_name',
-                                'entity'=> 'patient_rel',
-                                'model' => "App\Models\Patient",
-                                'attribute' => 'name']);
         
-        $this->crud->addColumn(['label' => 'Έξτρα Χρεώσεις',
-                                'type'=> 'select_multiple',
-                                'name'=> 'extra_xrewseis',
-                                'entity'=> 'extra_xrewseis',
-                                'model' => "App\Models\Extraxrewsei",
-                                'attribute' => 'name']);
+        
+        
 
 
-        $this->crud->addColumn([
-            'name' => 'patient_name',
-            'label' => 'Ασθενής',
-            'type' => 'text'
-        ]);
+       
 
         $this->crud->addColumn([
             'name' => 'start',
@@ -133,7 +151,7 @@ public $doctor;
 
 
 
-        CRUD::setFromDb();
+        
         $this->crud->enableExportButtons();
         
         // $this->crud->addFilter([
@@ -194,6 +212,13 @@ public $doctor;
     protected function setupCreateOperation()
     {
         CRUD::setValidation(AppointmentRequest::class);
+
+        $user = Auth::user();
+
+
+
+
+        
         // CRUD::setFromDb(); // fields
 
         // CRUD::field('date')
@@ -206,12 +231,13 @@ public $doctor;
         // ->wrapper(['class' => 'form-group col-md-6'])
         // ;
 
-		CRUD::field('doctor')
-                ->type('select')
+		CRUD::field('doctor_rel')
+                ->type('relationship')
                 ->label('Ονοματεπώνυμο Γιατρού')
                 ->entity('Doctor')
                 ->model("App\Models\Doctor")
                 ->attribute('onomateponimo')
+                ->ajax(false)
                 ->inline_create(true)
                 ->wrapper(['class' => 'form-group col-md-6'])
                 ;
@@ -226,27 +252,32 @@ public $doctor;
             ->wrapper(['class' => 'form-group col-md-6'])
             ;
 
-            CRUD::field('patient_name')
-            ->type('select2')
-            ->label('Ονοματεπώνυμο Ασθενή')
-            ->entity('Patient')
-            ->model("App\Models\Patient")
-            ->attribute('name')
-            ->inline_create(true)
-            ->wrapper(['class' => 'form-group col-md-6'])
-            ;
+            if(! $user->hasRole('Μαία'))
+            {
+                CRUD::field('patient_name')
+                ->type('select2')
+                ->label('Ονοματεπώνυμο Ασθενή')
+                ->entity('Patient')
+                ->model("App\Models\Patient")
+                ->attribute('name')
+                ->inline_create(true)
+                ->wrapper(['class' => 'form-group col-md-6'])
+                ;
+    
+                CRUD::field('extra_xrewseis')
+                ->type('select2_multiple')
+                ->pivot('extraxrewseis_appointments')
+                ->label('Έξτρα χρεώσεις')
+                ->pivot(true)
+                ->entity('Extraxrewsei')
+                ->model("App\Models\Extraxrewsei")
+                ->attribute('name')
+                ->inline_create(true)
+                ->wrapper(['class' => 'form-group col-md-6'])
+                ;
 
-            CRUD::field('extra_xrewseis')
-            ->type('select2_multiple')
-            ->pivot('extraxrewseis_appointments')
-            ->label('Έξτρα χρεώσεις')
-            ->pivot(true)
-            ->entity('Extraxrewsei')
-            ->model("App\Models\Extraxrewsei")
-            ->attribute('name')
-            ->inline_create(true)
-            ->wrapper(['class' => 'form-group col-md-6'])
-            ;
+            }
+           
 
         CRUD::field('start')
         ->label('Έναρξη')
@@ -305,10 +336,7 @@ public $doctor;
         $this->setupListOperation();
     }
 
-    protected function fetchDoctor()
-    {
-        return $this->fetch(App\Models\Doctor::class);
-    }
+    
 
     public function passinfo()
     {

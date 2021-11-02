@@ -24,6 +24,35 @@
     
 
     <script>
+        
+        function dayBind(days) {
+            days.click(dayClick)
+                .mousedown(daySelectionMousedown);
+            //Added by Stefan Kühn
+            days.dblclick(dayDblClick)
+                .mousedown(daySelectionMousedown);
+        }
+
+
+        function dayClick(ev) {
+            if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
+                var date = parseISO8601($(this).data('date'));
+                trigger('dayClick', this, date, true, ev);
+            }
+        }
+
+
+        //Added by Stefan Kühn
+        function dayDblClick(ev) {
+            if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
+                var date = parseISO8601($(this).data('date'));
+                trigger('dayDblClick', this, date, true, ev);
+            }
+        }
+        
+        
+        
+        
         $(document).ready(function () {
 
             var initialLocaleCode = 'el';
@@ -53,6 +82,11 @@
                 },
                 weekText: 'Εβδ',
                 firstDay: 1,
+                dayClick: function (date, allDay, jsEvent, view) {
+                    $('#full_calendar_events').fullCalendar('gotoDate', date.year(), date.month(),
+                        date.date());
+                    $('#full_calendar_events').fullCalendar('changeView', 'basicDay');
+                },
                 allDayText: 'Ολοήμερο',
                 moreLinkText: 'περισσότερα',
                 noEventsText: 'Δεν υπάρχουν γεγονότα προς εμφάνιση',
@@ -60,6 +94,7 @@
                 monthNamesShort: ['Ιαν', 'Φεβ', 'Μάρ', 'Μάι', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοεμ', 'Δεκ'],
                 dayNames: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'],
                 dayNamesShort: ['Κυ', 'Δε', 'Τρι', 'Τετ', 'Πε', 'Πα', 'Σα'],
+                nowIndicator: true,
                 // events: SITEURL + "/full-calendar",
                 eventSources: [
                     {

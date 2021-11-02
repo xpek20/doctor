@@ -40,7 +40,24 @@ class AnesthpgrogramCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        // CRUD::setFromDb(); // columns
+        $this->crud->addColumn([
+            'name' => 'name',
+            'label' => 'Τίτλος',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'start',
+            'label' => 'Έναρξη',
+            'type' => 'dateTime'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'end',
+            'label' => 'Λήξη',
+            'type' => 'dateTime'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,7 +76,21 @@ class AnesthpgrogramCrudController extends CrudController
     {
         CRUD::setValidation(AnesthpgrogramRequest::class);
 
-        CRUD::setFromDb(); // fields
+        CRUD::field('name')
+        ->label('Τίτλος')
+        ;
+
+        CRUD::field('start')
+        ->label('Έναρξη')
+        ;
+
+        CRUD::field('end')
+        ->label('Λήξη')
+        ;
+        
+        
+        
+        // CRUD::setFromDb(); // fields
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
