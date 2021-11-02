@@ -39,7 +39,7 @@ class AppointmentCrudController extends CrudController
 public $appointment;
 public $doctor;
 
-    public function fetchDoctor()
+    public function fetchDoctor_rel()
     {
         return $this->fetch(Doctor::class);
 
@@ -234,13 +234,20 @@ public $doctor;
 		CRUD::field('doctor_rel')
                 ->type('relationship')
                 ->label('Ονοματεπώνυμο Γιατρού')
-                ->entity('Doctor')
+                ->entity('doctor_rel')
                 ->model("App\Models\Doctor")
                 ->attribute('onomateponimo')
-                ->ajax(false)
-                ->inline_create(true)
+                ->inline_create(['entity' => 'doctor'])
+                
                 ->wrapper(['class' => 'form-group col-md-6'])
                 ;
+
+        // $this->crud->addField([
+        //     'name' => 'doctor_rel',
+        //     'type' => 'relationship',
+        //     'entity' => 'doctor_rel',
+        //     'inline_create' => ['entity' => 'doctor'],
+        // ]);
 
         CRUD::field('operation_type')
             ->type('select')
