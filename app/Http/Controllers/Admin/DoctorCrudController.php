@@ -33,7 +33,7 @@ class DoctorCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Doctor::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/doctor');
-        CRUD::setEntityNameStrings('doctor', 'doctors');
+        CRUD::setEntityNameStrings('Ιατρού', 'Ιατροί');
 
         $user = Auth::user();
         if ($user->hasRole('Μαία'))
