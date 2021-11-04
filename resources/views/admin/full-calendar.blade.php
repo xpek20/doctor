@@ -25,30 +25,7 @@
 
     <script>
         
-        function dayBind(days) {
-            days.click(dayClick)
-                .mousedown(daySelectionMousedown);
-            //Added by Stefan Kühn
-            days.dblclick(dayDblClick)
-                .mousedown(daySelectionMousedown);
-        }
-
-
-        function dayClick(ev) {
-            if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
-                var date = parseISO8601($(this).data('date'));
-                trigger('dayClick', this, date, true, ev);
-            }
-        }
-
-
-        //Added by Stefan Kühn
-        function dayDblClick(ev) {
-            if (!opt('selectable')) { // if selectable, SelectionManager will worry about dayClick
-                var date = parseISO8601($(this).data('date'));
-                trigger('dayDblClick', this, date, true, ev);
-            }
-        }
+       
         
         
         
@@ -82,10 +59,16 @@
                 },
                 weekText: 'Εβδ',
                 firstDay: 1,
-                dayClick: function (date, allDay, jsEvent, view) {
-                    $('#full_calendar_events').fullCalendar('gotoDate', date.year(), date.month(),
-                        date.date());
-                    $('#full_calendar_events').fullCalendar('changeView', 'basicDay');
+                // dayClick: function (date, allDay, jsEvent, view) {
+                //     $('#full_calendar_events').fullCalendar('gotoDate', date.year(), date.month(),
+                //         date.date());
+                //     $('#full_calendar_events').fullCalendar('changeView', 'agendaDay');
+                // },
+                dayClick: function(date, jsEvent, view) {
+
+                $('#full_calendar_events').fullCalendar('gotoDate',date);
+                $('#full_calendar_events').fullCalendar('changeView','agendaDay');
+
                 },
                 allDayText: 'Ολοήμερο',
                 moreLinkText: 'περισσότερα',
