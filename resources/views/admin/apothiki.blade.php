@@ -58,7 +58,7 @@
                         Οροί
                     </h2>
                     <p>
-                        <a class="btn  btn-success" href='/admin/oros/create'>Προβολή »</a>
+                        <a class="btn  btn-success" href='/admin/oros/create'>Προσθήκη »</a>
                         <a style="margin-left:10px" class="btn  btn-info" href='/admin/oros'>Προβολή »</a>
                     </p>
                 </div>
@@ -102,7 +102,7 @@
                         Γάλατα
                     </h2>
                     <p>
-                        <a class="btn  btn-success" href='/admin/galata/create'>Προβολή »</a>
+                        <a class="btn  btn-success" href='/admin/galata/create'>Προσθήκη »</a>
                         <a style="margin-left:10px" class="btn  btn-info" href='/admin/galata'>Προβολή »</a>
                         
                     </p>
@@ -147,7 +147,7 @@
                         Βελόνες - Σύριγγες
                     </h2>
                     <p>
-                        <a class="btn  btn-success" href='/admin/velones-sirigges/create'>Προβολή »</a>
+                        <a class="btn  btn-success" href='/admin/velones-sirigges/create'>Προσθήκη »</a>
                         <a style="margin-left:10px" class="btn  btn-info" href='/admin/velones-sirigges'>Προβολή »</a>
                     </p>
                 </div>

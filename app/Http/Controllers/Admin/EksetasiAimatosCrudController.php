@@ -61,7 +61,7 @@ class EksetasiAimatosCrudController extends CrudController
         $this->crud->addColumn([
             'name' => 'hmeromhnia-liksis',
             'label' => 'Ημερομηνία Λήξης',
-            'type' => 'text'
+            'type' => 'date'
         ]);
 
         $this->crud->addColumn([
@@ -110,6 +110,7 @@ class EksetasiAimatosCrudController extends CrudController
 
         CRUD::field('hmeromhnia-liksis')
         ->label('Ημερομηνία Λήξης')
+        ->type('date')
         ;
 
         CRUD::field('quantity')

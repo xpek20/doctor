@@ -61,7 +61,7 @@ class ExpenseCrudController extends CrudController
 
 
         $this->crud->addColumn([
-            'name' => 'perigrafi',
+            'name' => 'description',
             'label' => 'Περιγραφή',
             'type' => 'text'
         ]);

@@ -74,7 +74,7 @@ return [
     'project_logo'   => '<b>Kliniki</b>Mitera',
 
     // Show / hide breadcrumbs on admin panel pages.
-    'breadcrumbs' => false,
+    'breadcrumbs' => true,
 
     // Horizontal navbar classes. Helps make the admin panel look similar to your project's design.
     'header_class' => 'app-header bg-light border-0 navbar',

@@ -46,8 +46,19 @@ class ExtraxrewseiCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        // CRUD::setFromDb(); // columns
 
+        $this->crud->addColumn([
+            'name' => 'name',
+            'label' => 'Όνομα',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'price',
+            'label' => 'Τιμή',
+            'type' => 'text'
+        ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
@@ -65,7 +76,14 @@ class ExtraxrewseiCrudController extends CrudController
     {
         CRUD::setValidation(ExtraxrewseiRequest::class);
 
-        CRUD::setFromDb(); // fields
+        // CRUD::setFromDb(); // fields
+        CRUD::field('name')
+        ->label('Όνομα')
+        ;
+
+        CRUD::field('price')
+        ->label('Τιμή')
+        ;
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

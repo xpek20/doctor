@@ -121,6 +121,7 @@ class PampersCrudController extends CrudController
         CRUD::field('timh')
         ->label('Τιμή')
         ->type('number')
+        ->attributes(['step' => 'any'])
         ;
 
         /**
