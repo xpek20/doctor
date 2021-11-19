@@ -6,6 +6,7 @@ use App\Events\Appointment_Creation;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use \Venturecraft\Revisionable\RevisionableTrait;
 
 

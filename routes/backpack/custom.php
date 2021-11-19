@@ -51,5 +51,7 @@ Route::group([
     Route::get('/esoda-eksoda', function () {
         return view('admin.esoda-eksoda');
     });
+    Route::get('charts/new-entries', 'Charts\moneychartController@response');
+    Route::get('charts/categories', 'Charts\appointmentperoperationChartController@response');
     // Route::get('full-calendar-anesth', 'anesthcontroller@index');
 }); // this should be the absolute last line of this file
