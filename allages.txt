@@ -1,0 +1,26 @@
+$datatable = [];
+        $oliko = [];
+        $testc;
+        foreach($markes as $line){
+            // Log::info($line);
+            $countm = Aftokinito::where('marka',$line->marka)->count();
+            
+            $datatable[$line->marka] = [
+                'marka' => $line->marka,
+                'count' => $countm,
+            ];
+            $ids = array_column($datatable[$line->marka],'count');
+            $oliko = Arr::pluck($datatable[$line->marka],'count');
+            Log::info($oliko);
+            $testc = collect($datatable[$line->marka]);
+            
+            // Log::info($line->marka.$countm);
+            
+        }
+        $counts = [];
+        $counts = $testc->pluck('count');
+        Log::info($oliko);
+        
+        Log::info($datatable);
+        // $this->chart->dataset($datatable['marka'],'pie',[$datatable['count']]);
+        
