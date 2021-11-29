@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Events\Appointment_Creation;
+use App\Models\Extraxrewsei;
 use App\Models\Operation;
 use Notification;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,7 +34,6 @@ class AppointmentCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     use \Backpack\ReviseOperation\ReviseOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
     
 
 public $appointment;
@@ -43,6 +43,17 @@ public $doctor;
     {
         return $this->fetch(Doctor::class);
 
+    }
+
+    public function fetchOperation_rel()
+    {
+        return $this->fetch(Operation::class);
+
+    }
+
+    public function fetchExtra_xrewseis()
+    {
+        return $this->fetch(Extraxrewsei::class);
     }
 
     
@@ -109,7 +120,7 @@ public $doctor;
 
         $this->crud->addColumn(['label' => 'Εγχείρηση',
                                 'type'=> 'select',
-                                'name'=> 'operation_type',
+                                'name'=> 'operation_rel',
                                 'entity'=> 'operation_rel',
                                 'model' => "App\Models\Operation",
                                 'attribute' => 'name']);
@@ -238,7 +249,6 @@ public $doctor;
                 ->model("App\Models\Doctor")
                 ->attribute('onomateponimo')
                 ->inline_create(['entity' => 'doctor'])
-                
                 ->wrapper(['class' => 'form-group col-md-6'])
                 ;
 
@@ -249,13 +259,15 @@ public $doctor;
         //     'inline_create' => ['entity' => 'doctor'],
         // ]);
 
-        CRUD::field('operation_type')
-            ->type('select')
+
+            CRUD::field('operation_rel')
+            ->type('relationship')
             ->label('Είδος επέμβασης')
-            ->entity('Operation')
+            ->entity('operation_rel')
             ->model("App\Models\Operation")
             ->attribute('name')
-            ->inline_create(true)
+            ->inline_create(['entity' => 'operation'])
+            // ->data_source(backpack_url($this->crud->route.'/fetch/supplier_rel'))
             ->wrapper(['class' => 'form-group col-md-6'])
             ;
 
@@ -272,14 +284,14 @@ public $doctor;
                 ;
     
                 CRUD::field('extra_xrewseis')
-                ->type('select2_multiple')
+                ->type('relationship')
                 ->pivot('extraxrewseis_appointments')
                 ->label('Έξτρα χρεώσεις')
                 ->pivot(true)
-                ->entity('Extraxrewsei')
+                ->entity('extra_xrewseis')
                 ->model("App\Models\Extraxrewsei")
                 ->attribute('name')
-                ->inline_create(true)
+                ->inline_create(['entity' => 'extraxrewsei'])
                 ->wrapper(['class' => 'form-group col-md-6'])
                 ;
 

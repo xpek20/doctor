@@ -109,6 +109,7 @@ class FoodCrudController extends CrudController
 
         CRUD::field('used')
         ->label('Ξοδεύτηκαν')
+        
         ;
 
 

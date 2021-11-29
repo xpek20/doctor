@@ -19,6 +19,13 @@ class SupplierCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+
+    public function fetchSupplier_rel()
+    {
+        return $this->fetch(SupplierCategory::class);
+
+    }
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -98,13 +105,14 @@ class SupplierCrudController extends CrudController
             ->label('Όνομα')
             ;
 
-        CRUD::field('sup_cat')
-            ->type('select2')
+        CRUD::field('supplier_rel')
+            ->type('relationship')
             ->label('Είδος')
-            ->entity('SupplierCategory')
+            ->entity('supplier_rel')
             ->model("App\Models\SupplierCategory")
             ->attribute('name')
-            ->inline_create(true)
+            ->inline_create(['entity' => 'supplier-category'])
+            // ->data_source(backpack_url($this->crud->route.'/fetch/supplier_rel'))
             ->wrapper(['class' => 'form-group col-md-6'])
             ;
 
