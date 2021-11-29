@@ -250,6 +250,7 @@ public $doctor;
                 ->attribute('onomateponimo')
                 ->inline_create(['entity' => 'doctor'])
                 ->wrapper(['class' => 'form-group col-md-6'])
+                ->placeholder('Επιλογή Γιατρού')
                 ;
 
         // $this->crud->addField([
@@ -266,6 +267,7 @@ public $doctor;
             ->entity('operation_rel')
             ->model("App\Models\Operation")
             ->attribute('name')
+            ->placeholder('Επιλογή Είδους Επέμβασης')
             ->inline_create(['entity' => 'operation'])
             // ->data_source(backpack_url($this->crud->route.'/fetch/supplier_rel'))
             ->wrapper(['class' => 'form-group col-md-6'])
@@ -292,6 +294,7 @@ public $doctor;
                 ->model("App\Models\Extraxrewsei")
                 ->attribute('name')
                 ->inline_create(['entity' => 'extraxrewsei'])
+                ->placeholder('Επιλογή Έξτρα Χρεώσεων')
                 ->wrapper(['class' => 'form-group col-md-6'])
                 ;
 
