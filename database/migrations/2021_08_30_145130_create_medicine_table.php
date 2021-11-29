@@ -19,7 +19,7 @@ class CreateMedicineTable extends Migration
             $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
             $table->bigInteger('quantity');
             $table->string('siskevasia');
-            $table->bigInteger('medicine_cat_id');
+            $table->bigInteger('medicine_cat_id')->nullable();
             $table->timestamps();
         });
     }
