@@ -56,9 +56,27 @@ class MedicineCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
+            'name' => 'siskevasia',
+            'label' => 'Συσκευασία/Βάρος',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
             'name' => 'quantity',
             'label' => 'Ποσότητα',
             'type' => 'number'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'used',
+            'label' => 'Ξοδεύτηκαν',
+            'type' => 'text'
+        ]);
+
+        $this->crud->addColumn([
+            'name' => 'remaining',
+            'label' => 'Υπόλοιπο',
+            'type' => 'text'
         ]);
 
         $this->crud->addColumn(['label' => 'Κατηγορία',
@@ -91,9 +109,18 @@ class MedicineCrudController extends CrudController
                 ->label('Όνομα')
                 ;
 
+        CRUD::field('siskevasia')
+        ->label('Συσκευασία/Βάρος')
+        ;
+
         CRUD::field('quantity')
         ->label('Ποσότητα')
         ->type('number')
+        ;
+
+        CRUD::field('used')
+        ->label('Ξοδεύτηκαν')
+        
         ;
 
         CRUD::field('medicine_cat_id')
