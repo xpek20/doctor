@@ -20,7 +20,7 @@ use App\Http\Controllers\newCalendarController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin');
 });
 
 Route::get('appointment/create/mail','App\Http\Controllers\AppointmentEmail@index');
