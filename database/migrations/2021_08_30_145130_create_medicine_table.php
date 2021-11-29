@@ -15,6 +15,8 @@ class CreateMedicineTable extends Migration
         Schema::create('medicine', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->decimal('used')->nullable();
+            $table->decimal('remaining')->virtualAs('quantity - used')->nullable();
             $table->bigInteger('quantity');
             $table->bigInteger('medicine_cat_id');
             $table->timestamps();
