@@ -64,19 +64,5 @@
                 <div class="text-center"><a href="{{ route('backpack.auth.register') }}">{{ trans('backpack::base.register') }}</a></div>
             @endif
         </div>
-        <div class="col-6 col-md-8 col-lg-4">
-            <h3 class="text-center mb-4" style="color:#f1f4f8">T</h3>
-            <div class="card">
-                <div class="card-body">
-                    <h3>Demo Admin</h3>
-                    <p>Username: demo@admin.com</p>
-                    <p>Password: demoadmin</p>
-                    <h3>Demo Μαία</h3>
-                    <p>Username: user@demo.com</p>
-                    <p>Password: userdemo123</p>
-                
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
